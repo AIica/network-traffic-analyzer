@@ -22,6 +22,7 @@ def main():
 
     for entry in model.results.values():
         Visualize(entry['model'], entry['data'][0], entry['data'][1], entry['data'][2]).view_report()
+    model.save_model(args.output)
 
 
 if __name__ == "__main__":
