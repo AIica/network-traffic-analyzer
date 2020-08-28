@@ -1,3 +1,4 @@
+import pickle
 from typing import List, Union
 
 import numpy as np
@@ -18,6 +19,13 @@ class Model:
         self.__preprocess(data_train, seed)
         self.__model = model
         self.__results = dict()
+
+    def save_model(self, output_file: str) -> None:
+        """Save model to file 'output_file'"""
+
+        if output_file:
+            pickle.dump((self.__model, self.scale, self.labeler), open(output_file, "wb"))
+            print("\nМодель успешно записана в файл '{}'.".format(output_file))
 
     def __data_prepare(self, data_train: Union[DataFrame, Series], scale: StandardScaler,
                        labeler: LabelEncoder) -> None:
