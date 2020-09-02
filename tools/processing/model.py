@@ -65,7 +65,7 @@ class Model:
     def ___split_data(train_data: Union[DataFrame, Series], clusters_count: int) -> List[Union[DataFrame, Series]]:
         """Split data for train samples"""
         proto_clusters = [train_data[train_data["proto"] == proto] for proto in train_data["proto"].unique()]
-        clusters = [[], [], []]
+        clusters = [[] for i in range(clusters_count)]
         for cluster in proto_clusters:
             split_index = len(cluster) // clusters_count
             for i in range(clusters_count):
