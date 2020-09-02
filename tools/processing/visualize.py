@@ -11,7 +11,6 @@ class Visualize:
 
     def __init__(self, model: any, columns: Dict, true_labels: Dict, predicted_labels: Dict) -> None:
         """"Init function"""
-
         self.__model = model
         self.__columns = columns
         self.__true_labels = true_labels
@@ -19,7 +18,6 @@ class Visualize:
 
     def __view_feature_importance(self) -> str:
         """Function for getting feature_importances"""
-
         imp = {col: imp for imp, col
                in zip(self.__model.feature_importances_, self.__columns)}
         assert len(imp) == len(self.__columns)
@@ -28,7 +26,6 @@ class Visualize:
 
     def __view_classification_class_report(self) -> DataFrame:
         """Function for getting classification_class_report"""
-
         classes = np.unique(self.__true_labels)
         res = ps.DataFrame({"y": self.__true_labels, "p": self.__predicted_labels}, index=None)
         table = ps.DataFrame(index=classes, columns=classes)
@@ -52,12 +49,10 @@ class Visualize:
 
     def __view_classification_report_sklearn(self) -> None:
         """Function for getting classification_report of sklearn"""
-
         return classification_report(self.__true_labels, self.__predicted_labels)
 
     def view_report(self) -> None:
         """Get full report for training process"""
-
         print(50 * '-')
         print(self.view_feature_importance())
         print(self.view_classification_report_sklearn())
