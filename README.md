@@ -2,7 +2,13 @@
 
 ## Description
 Repo create model for analyze Ethernet package and predict it's protocol.
+Supports model: 
+* KNeighborsClassifier
+* LogisticRegression
+* RandomForestClassifier
+* XGBClassifier
 
+Provides auto-parameters searching for fit process using **GridSearchSV**
 
 ## Basic steps
 * Get **.pcapng** file. Use [Wireshark](https://www.wireshark.org/download.html)
